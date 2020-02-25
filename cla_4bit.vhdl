@@ -1,3 +1,6 @@
+-- Code created by Dawson Fox
+-- February 2020 in Newark, Delaware
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
@@ -23,4 +26,6 @@ begin
 	c(2) <= g(2) or (p(2) and g(1)) or (p(2) and p(1) and g(0)) or (p(2) and p(1) and p(0) and c_in); --carry in for 3rd bit
 	sum <= p xor (c & c_in); --concatenates to form whole carry-in vector for sum computation
 	c_out <= ((a(3) xor b(3)) and c(2)) or (a(3) and b(3)); --carry-out only calculated for 3rd bit (overflow)
+	-- carry-out calculated with c2, not based on look ahead logic ...
+	-- Should it be included? Might not be worth the cost, would take a lot of gates
 end bhv;
